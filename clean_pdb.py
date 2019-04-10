@@ -29,6 +29,7 @@ from Bio.PDB import PDBParser
 from Bio.PDB import Select
 from Bio.PDB.Polypeptide import PPBuilder
 
+from functools import reduce
 # CONSTANTS
 PDB_LINE_TEMPLATE = '{record: <6}{serial: >5} {atom_name: ^4}{altloc: ^1}{resname: ^3} {chain_id: ^1}{resnum: >4}{icode: ^1}   {x: >8.3f}{y: >8.3f}{z: >8.3f}{occ: >6.2f}{tfac: >6.2f}          {element: >2}{charge: >2}'
 
@@ -143,7 +144,7 @@ Dependencies:
     
     # WRITE OUT CLEANED PDB
     # MANY OF THE ISSUES ARE SOLVED DURING THE WRITING OUT
-    with open('.'.join((pdb_noext, output_label, pdb_ext)), 'wb') as fo:
+    with open('.'.join((pdb_noext, output_label, pdb_ext)), 'w') as fo:
         
         atom_serial = 1
         
